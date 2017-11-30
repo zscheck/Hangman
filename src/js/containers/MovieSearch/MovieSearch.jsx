@@ -89,9 +89,6 @@ export default class MovieSearch extends Component {
 
   render() {
     const { searchTerm, movieList, pastSearch } = this.props;
-    // const width = {
-    //   maxWidth: '32%'
-    // };
     const height = {
       height: '50vh'
     };
@@ -123,12 +120,20 @@ export default class MovieSearch extends Component {
         <div className='row mx-0'>
           {movieList.map(movie =>
             <div key={ movie.imdbID } className='col-4 card border-secondary px-0'>
-              <img
-                className='card-img-top'
-                style={ height }
-                src={ movie.Poster }
-                alt='placeholder'
-              />
+              { movie.Poster === 'N/A' ?
+                <img
+                  className='card-img-top'
+                  style={ height }
+                  src='https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png'
+                  alt='placeholder'
+                /> :
+                <img
+                  className='card-img-top'
+                  style={ height }
+                  src={ movie.Poster }
+                  alt='placeholder'
+                />
+              }
               <div className='card-body text-center'>
                 <div>
                   <h6>{ movie.Title }</h6>

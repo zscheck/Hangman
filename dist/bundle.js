@@ -14804,9 +14804,6 @@ var MovieSearch = function (_Component) {
           searchTerm = _props4.searchTerm,
           movieList = _props4.movieList,
           pastSearch = _props4.pastSearch;
-      // const width = {
-      //   maxWidth: '32%'
-      // };
 
       var height = {
         height: '50vh'
@@ -14862,7 +14859,12 @@ var MovieSearch = function (_Component) {
             return _react2.default.createElement(
               'div',
               { key: movie.imdbID, className: 'col-4 card border-secondary px-0' },
-              _react2.default.createElement('img', {
+              movie.Poster === 'N/A' ? _react2.default.createElement('img', {
+                className: 'card-img-top',
+                style: height,
+                src: 'https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png',
+                alt: 'placeholder'
+              }) : _react2.default.createElement('img', {
                 className: 'card-img-top',
                 style: height,
                 src: movie.Poster,
