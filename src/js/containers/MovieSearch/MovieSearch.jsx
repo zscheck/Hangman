@@ -18,6 +18,7 @@ export default class MovieSearch extends Component {
     this.getMovies = this.getMovies.bind(this);
     this.repeatSearch = this.repeatSearch.bind(this);
     this.selectMovie = this.selectMovie.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   getMovies() {
@@ -72,6 +73,14 @@ export default class MovieSearch extends Component {
     }
   }
 
+  handleFocus() {
+    document.addEventListener('keypress', (e) => {
+      if (e.keyCode === 13) {
+        this.getMovies();
+      }
+    });
+  }
+
   handleSearch(e) {
     const { dispatch } = this.props;
     const { value } = e.target;
@@ -96,6 +105,7 @@ export default class MovieSearch extends Component {
             placeholder='Search Movie...'
             value={ searchTerm }
             onChange={ this.handleSearch }
+            onFocus={ this.handleFocus }
           />
           <div className='input-group-btn'>
             <button
