@@ -12,23 +12,44 @@ export default class MovieDetail extends Component {
       backgroundColor: 'transparent',
       border: '0px'
     };
+    const background = {
+      backgroundImage: "url('http://www.kernelpopcorn.com/wp-content/uploads/2012/10/background-1024x668.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    };
     return (
       <div className='w-75 mx-auto'>
-        <h1 className='text-center'>Movie Finder</h1>
-        <Link to={ '/' }>
-          <button type='button' className='btn btn-link'>Go Back</button>
-        </Link>
-        <br />
-        <div className='row'>
-          <div className='col-5 card p-0 mx-3' style={ styles } >
-            <img className='card-img' src={ movieInfo.Poster } alt='Poster' />
+        <div className='text-center'>
+          <h1>{ movieInfo.Title}</h1>
+          <Link to={ '/' }>
+            <button type='button' className='btn btn-link text-center'>Back to Search Results</button>
+          </Link>
+          <br />
+        </div>
+        <div className='row' style={ background }>
+          <div className='col-3' />
+          <div className='col-6 card p-0' style={ styles } >
+            { movieInfo.Poster === 'N/A' ?
+              <img
+                className='card-img'
+                src='https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png'
+                alt='placeholder'
+              /> :
+              <img
+                className='card-img'
+                src={ movieInfo.Poster }
+                alt='placeholder'
+              />
+              }
           </div>
-          <div className='col-6 card px-0 border-info mx-3'>
+          <div className='col-3' />
+        </div>
+        <div className='row'>
+          <div className='col-12 card px-0 border-info mt-3'>
             <div className='card-header alert-info text-info'>
               <strong>Movie Details</strong>
             </div>
             <div className='card-body pt-1'>
-              <h4 className='card-title text-center'>{ movieInfo.Title }</h4>
               <div className='mx-auto text-center'>
                 <span className='badge badge-pill badge-success mx-2'>Released { ` ${movieInfo.Year}` }</span>
                 <span className='badge badge-pill badge-success mx-2'>{ movieInfo.Runtime }</span>

@@ -14492,35 +14492,58 @@ var MovieDetail = function (_Component) {
         backgroundColor: 'transparent',
         border: '0px'
       };
+      var background = {
+        backgroundImage: "url('http://www.kernelpopcorn.com/wp-content/uploads/2012/10/background-1024x668.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      };
       return _react2.default.createElement(
         'div',
         { className: 'w-75 mx-auto' },
         _react2.default.createElement(
-          'h1',
+          'div',
           { className: 'text-center' },
-          'Movie Finder'
+          _react2.default.createElement(
+            'h1',
+            null,
+            movieInfo.Title
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/' },
+            _react2.default.createElement(
+              'button',
+              { type: 'button', className: 'btn btn-link text-center' },
+              'Back to Search Results'
+            )
+          ),
+          _react2.default.createElement('br', null)
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/' },
+          'div',
+          { className: 'row', style: background },
+          _react2.default.createElement('div', { className: 'col-3' }),
           _react2.default.createElement(
-            'button',
-            { type: 'button', className: 'btn btn-link' },
-            'Go Back'
-          )
+            'div',
+            { className: 'col-6 card p-0', style: styles },
+            movieInfo.Poster === 'N/A' ? _react2.default.createElement('img', {
+              className: 'card-img',
+              src: 'https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png',
+              alt: 'placeholder'
+            }) : _react2.default.createElement('img', {
+              className: 'card-img',
+              src: movieInfo.Poster,
+              alt: 'placeholder'
+            })
+          ),
+          _react2.default.createElement('div', { className: 'col-3' })
         ),
-        _react2.default.createElement('br', null),
         _react2.default.createElement(
           'div',
           { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col-5 card p-0 mx-3', style: styles },
-            _react2.default.createElement('img', { className: 'card-img', src: movieInfo.Poster, alt: 'Poster' })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'col-6 card px-0 border-info mx-3' },
+            { className: 'col-12 card px-0 border-info mt-3' },
             _react2.default.createElement(
               'div',
               { className: 'card-header alert-info text-info' },
@@ -14533,11 +14556,6 @@ var MovieDetail = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'card-body pt-1' },
-              _react2.default.createElement(
-                'h4',
-                { className: 'card-title text-center' },
-                movieInfo.Title
-              ),
               _react2.default.createElement(
                 'div',
                 { className: 'mx-auto text-center' },
