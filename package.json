@@ -1,5 +1,5 @@
 {
-  "name": "movie-finder",
+  "name": "hangman",
   "version": "0.1.0",
   "description": "A new React project.",
   "main": "server/index.js",
@@ -37,6 +37,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^5.0.0",
+    "redux-thunk": "^2.2.0",
     "serve-favicon": "^2.0.1",
     "url-loader": "^0.5.9",
     "webpack": "^2.0.0"
