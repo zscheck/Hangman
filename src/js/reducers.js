@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import MovieSearchReducer from './containers/MovieSearch/MovieSearchReducer';
+// import LandingReducer from './containers/Landing/LandingReducer';
+import GameReducer from './containers/Game/GameReducer';
 
 const reducers = combineReducers({
-  movieSearch: MovieSearchReducer
+  // Landing: LandingReducer,
+  Game: GameReducer
 });
 
 export default reducers;

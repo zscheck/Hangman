@@ -5,16 +5,20 @@ import {
   Route
 } from 'react-router-dom';
 
-import MovieSearch from './containers/MovieSearch/index';
-import MovieDetail from './containers/MovieDetail/index';
+import Landing from './containers/Landing/index';
+import Game from './containers/Game/index';
+import Lose from './containers/Result/LoseIndex';
+import Win from './containers/Result/WinIndex';
 
 export default class App extends Component {
   render() {
     return (
       <Router>
         <div className='container'>
-          <Route exact path='/' component={ MovieSearch } />
-          <Route path='/movie/:id' component={ MovieDetail } />
+          <Route exact path='/' component={ Landing } />
+          <Route path='/play' component={ Game } />
+          <Route path='/youlose' component={ Lose } />
+          <Route path='/winner' component={ Win } />
         </div>
       </Router>
     );

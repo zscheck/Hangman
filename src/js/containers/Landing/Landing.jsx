@@ -1,40 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  beginner,
-  moderate,
-  hard
-} from './MovieSearchAction';
+  beginner
+} from './LandingAction';
 
-export default class MovieSearch extends Component {
+export default class Landing extends Component {
   constructor(props) {
     super(props);
 
     this.beginner = this.beginner.bind(this);
-    this.moderate = this.moderate.bind(this);
-    this.hard = this.hard.bind(this);
+    // this.moderate = this.moderate.bind(this);
+    // this.hard = this.hard.bind(this);
   }
 
-  beginner() {
+  beginner(e) {
     const { dispatch } = this.props;
-    dispatch(beginner('value'));
-  }
-
-  moderate() {
-    const { dispatch } = this.props;
-    dispatch(moderate('value'));
-  }
-
-  hard() {
-    const { dispatch } = this.props;
-    dispatch(hard('value'));
+    dispatch(beginner(e.target.value));
   }
 
   render() {
-    // const {  } = this.props;
-    // const height = {
-    //   height: '50vh'
-    // };
     return (
       <div className='text-center'>
         <h1><span> H </span><span>  A </span><span>  N </span><span>  G </span><span >  M </span><span >  A </span><span>  N </span></h1>
@@ -44,15 +28,21 @@ export default class MovieSearch extends Component {
         <div className='row'>
           <div className='col-4'>
             <h5>Choose this if you're a wimp</h5>
-            <button className='btn btn-success' onClick={ this.beginner }>Beginner</button>
+            <Link to={ '/play' }>
+              <button className='btn btn-success' value={ 6 } onClick={ this.beginner }>Beginner</button>
+            </Link>
           </div>
           <div className='col-4'>
             <h5>Ok, you have some skills</h5>
-            <button className='btn btn-primary' onClick={ this.moderate }>Moderate</button>
+            <Link to={ '/play' }>
+              <button className='btn btn-primary' value={ 5 } onClick={ this.beginner }>Moderate</button>
+            </Link>
           </div>
           <div className='col-4'>
             <h5>You like to live dangerously</h5>
-            <button className='btn btn-danger' onClick={ this.hard }>Hard</button>
+            <Link to={ '/play' }>
+              <button className='btn btn-danger' value={ 3 } onClick={ this.beginner }>Hard</button>
+            </Link>
           </div>
         </div>
       </div>
