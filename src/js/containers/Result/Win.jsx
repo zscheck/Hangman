@@ -7,20 +7,23 @@ export default class Win extends Component {
     super(props);
 
     this.backHome = this.backHome.bind(this);
-}
+  }
 
-backHome() {
-    const {dispatch} = this.props;
-    dispatch(backHome());  
+  backHome() {
+    const { dispatch } = this.props;
+    dispatch(backHome());
   }
 
   render() {
+    const { word } = this.props;
     return (
-      <div>
-        <h1>Winner</h1>
+      <div className='pyro text-center text-white'>
+        <div className='before' />
+        <div className='after' />
+        <h1>Congratulations!</h1>
         <h3>Way to be AWESOME!</h3>
-        <Link to={ '/' }>
-          <button onClick={this.backHome}>go back</button>
+        <h1>The word was<span className='text-success'>{' ' + word}</span></h1>        <Link to={ '/' }>
+        <button className='btn btn-primary' onClick={ this.backHome }>Play Again?</button>
         </Link>
       </div>
     );

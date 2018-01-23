@@ -14359,7 +14359,7 @@ var Game = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'w-75 mx-auto text-center' },
+        { className: 'mx-auto text-center text-white' },
         _react2.default.createElement(
           'div',
           null,
@@ -14378,7 +14378,7 @@ var Game = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'mb-3' },
           _react2.default.createElement('img', { src: './gallows/gallows' + pictureNumber + '.jpg', alt: count + ' misses left' })
         ),
         _react2.default.createElement(
@@ -14471,7 +14471,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = GameReducer;
 var defaultState = {
-  count: 1,
+  count: 6,
   gameStarting: false,
   word: '',
   gameboard: [],
@@ -14526,7 +14526,7 @@ function GameReducer() {
       {
         return {
           letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-          count: 1,
+          count: 6,
           gameStarting: false,
           word: '',
           gameboard: []
@@ -14626,7 +14626,7 @@ var Landing = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'text-center' },
+        { className: 'text-center text-white' },
         _react2.default.createElement(
           'h1',
           null,
@@ -14671,7 +14671,11 @@ var Landing = function (_Component) {
           null,
           'Let\'s play a game...'
         ),
-        _react2.default.createElement('img', { src: './gallows/gallows6.jpg', alt: 'Hangman' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'mb-3' },
+          _react2.default.createElement('img', { src: './gallows/gallows6.jpg', alt: 'Hangman' })
+        ),
         _react2.default.createElement(
           'h3',
           null,
@@ -14870,27 +14874,39 @@ var Lose = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var word = this.props.word;
+
       return _react2.default.createElement(
         'div',
-        { className: 'text-center' },
+        { className: 'text-center text-white' },
         _react2.default.createElement(
           'h1',
           null,
-          'Loser!!!!!'
+          'You Suck!!!!!'
+        ),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'The word was',
+          _react2.default.createElement(
+            'span',
+            { className: 'text-danger' },
+            ' ' + word
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'mb-3' },
+          _react2.default.createElement('img', { src: './gallows/gallows6.jpg', alt: 'Game Over' })
         ),
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/' },
           _react2.default.createElement(
             'button',
-            { onClick: this.backHome },
-            'go back'
+            { className: 'btn btn-primary', onClick: this.backHome },
+            'Play Again?'
           )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement('img', { src: './gallows/gallows6.jpg', alt: 'Game Over' })
         )
       );
     }
@@ -14979,13 +14995,17 @@ var Win = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var word = this.props.word;
+
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'pyro text-center text-white' },
+        _react2.default.createElement('div', { className: 'before' }),
+        _react2.default.createElement('div', { className: 'after' }),
         _react2.default.createElement(
           'h1',
           null,
-          'Winner'
+          'Congratulations!'
         ),
         _react2.default.createElement(
           'h3',
@@ -14993,12 +15013,23 @@ var Win = function (_Component) {
           'Way to be AWESOME!'
         ),
         _react2.default.createElement(
+          'h1',
+          null,
+          'The word was',
+          _react2.default.createElement(
+            'span',
+            { className: 'text-success' },
+            ' ' + word
+          )
+        ),
+        '        ',
+        _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/' },
           _react2.default.createElement(
             'button',
-            { onClick: this.backHome },
-            'go back'
+            { className: 'btn btn-primary', onClick: this.backHome },
+            'Play Again?'
           )
         )
       );

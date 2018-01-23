@@ -42,7 +42,7 @@ export default class Game extends Component {
     const pictureNumber = 6 - count;
   
     return (
-      <div className='w-75 mx-auto text-center'>
+      <div className='mx-auto text-center text-white'>
         <div>
           <h1>Good Luck</h1>
           {/* <Link to={ '/' }>
@@ -52,7 +52,7 @@ export default class Game extends Component {
           <h1>{gameboard.join(' ')}</h1>
           <br />
         </div>
-        <div>
+        <div className='mb-3'>
           <img src={'./gallows/gallows' + pictureNumber + '.jpg'} alt={ count + ' misses left' } />
         </div>
         <div className='row'>

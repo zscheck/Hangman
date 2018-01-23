@@ -1,5 +1,5 @@
 const defaultState = {
-  count: 1,
+  count: 6,
   gameStarting: false,
   word: '',
   gameboard: [],
@@ -49,7 +49,7 @@ export default function GameReducer(state = defaultState, action) {
     case 'BACK_HOME': {
       return {
         letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-        count: 1,
+        count: 6,
         gameStarting: false,
         word: '',
         gameboard: []

@@ -10,20 +10,22 @@ export default class Lose extends Component {
   }
 
   backHome() {
-    const {dispatch} = this.props;
-    dispatch(backHome());  
+    const { dispatch } = this.props;
+    dispatch(backHome());
   }
 
   render() {
+    const { word } = this.props;
     return (
-      <div className='text-center'>
-        <h1>Loser!!!!!</h1>
-        <Link to={ '/' }>
-          <button onClick={ this.backHome }>go back</button>
-        </Link>
-        <div>
+      <div className='text-center text-white'>
+        <h1>You Suck!!!!!</h1>
+        <h1>The word was<span className='text-danger'>{' ' + word}</span></h1>
+        <div className='mb-3'>
           <img src='./gallows/gallows6.jpg' alt='Game Over' />
         </div>
+        <Link to={ '/' }>
+          <button className='btn btn-primary' onClick={ this.backHome }>Play Again?</button>
+        </Link>
       </div>
     );
   }
