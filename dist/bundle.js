@@ -14368,6 +14368,17 @@ var Game = function (_Component) {
       if (!gameboard.includes('__') && gameboard.length > 0) {
         return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/winner' });
       }
+      var buttonClass = {};
+      letters.forEach(function (letter) {
+        if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'U' || letter == 'O') {
+          buttonClass[letter] = 'btn btn-large btn-success shake';
+        } else if (letter == 'R' || letter == 'L' || letter == 'S' || letter == 'T' || letter == 'N') {
+          buttonClass[letter] = 'btn btn-large btn-primary shake';
+        } else {
+          buttonClass[letter] = 'btn btn-large btn-info shake';
+        }
+      });
+      console.log(buttonClass);
       var pictureNumber = 6 - count;
 
       return _react2.default.createElement(
@@ -14458,7 +14469,7 @@ var Game = function (_Component) {
               { className: 'col-sm-2 col-md-2 col-lg-1 mx-auto my-2' },
               _react2.default.createElement(
                 'button',
-                { className: 'btn btn-large btn-info shake', onClick: _this2.selectLetter, id: letter, title: index },
+                { className: buttonClass[letter], onClick: _this2.selectLetter, id: letter, title: index },
                 letter
               )
             );
@@ -14574,7 +14585,7 @@ var defaultState = {
   gameStarting: false,
   word: '',
   gameboard: [],
-  letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+  letters: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'V', 'W', 'X', 'Y', 'Z'],
   synonyms: [],
   hintUsed: false,
   usedLetters: []
@@ -14628,7 +14639,7 @@ function GameReducer() {
     case 'BACK_HOME':
       {
         return {
-          letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+          letters: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'V', 'W', 'X', 'Y', 'Z'],
           count: 6,
           gameStarting: false,
           word: '',

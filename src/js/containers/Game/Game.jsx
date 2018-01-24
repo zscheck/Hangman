@@ -46,6 +46,17 @@ export default class Game extends Component {
     if (!gameboard.includes('__') && gameboard.length > 0) {
       return <Redirect to='/winner' />;
     }
+    let buttonClass = {};
+    letters.forEach(letter => {
+      if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'U' || letter == 'O') {
+        buttonClass[letter] = 'btn btn-large btn-success shake';
+      } else if (letter == 'R' || letter == 'L' || letter == 'S' || letter == 'T' || letter == 'N') {
+        buttonClass[letter] = 'btn btn-large btn-primary shake';
+      } else {
+        buttonClass[letter] = 'btn btn-large btn-info shake';
+      }
+    });
+    console.log(buttonClass);
     const pictureNumber = 6 - count;
 
     return (
@@ -88,7 +99,7 @@ export default class Game extends Component {
         <div className='row'>
           {letters.map((letter, index) =>
             <div className='col-sm-2 col-md-2 col-lg-1 mx-auto my-2'>
-              <button className='btn btn-large btn-info shake' onClick={ this.selectLetter } id={ letter } title={ index }>
+              <button className={ buttonClass[letter] } onClick={ this.selectLetter } id={ letter } title={ index }>
                 {letter}
               </button>
             </div>

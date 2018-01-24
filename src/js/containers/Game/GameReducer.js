@@ -3,7 +3,7 @@ const defaultState = {
   gameStarting: false,
   word: '',
   gameboard: [],
-  letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+  letters: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'V', 'W', 'X', 'Y', 'Z'],
   synonyms: [],
   hintUsed: false,
   usedLetters: []
@@ -52,7 +52,7 @@ export default function GameReducer(state = defaultState, action) {
 
     case 'BACK_HOME': {
       return {
-        letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+        letters: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'V', 'W', 'X', 'Y', 'Z'],
         count: 6,
         gameStarting: false,
         word: '',
