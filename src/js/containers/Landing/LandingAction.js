@@ -17,17 +17,9 @@ export function beginner(x) {
   };
 }
 
-// export function moderate(x) {
-//   return {
-//     type: 'MOVIE_INFO',
-//     payload: movie
-//   };
-// }
-
-// export function hard(x) {
-//   return {
-//     type: 'UPDATE_SEARCH',
-//     payload: { searchTerm }
-//   };
-// }
-
+export function startGame() {
+  return {
+    type: 'START_GAME',
+    payload: true
+  };
+}

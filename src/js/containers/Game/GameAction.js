@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-export function startGame() {
-  return {
-    type: 'START_GAME',
-    payload: true
-  };
-}
-
 export function newCount(x) {
   return {
     type: 'COUNT',

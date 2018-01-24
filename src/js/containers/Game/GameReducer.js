@@ -32,6 +32,7 @@ export default function GameReducer(state = defaultState, action) {
         ...state,
         word: payload.word,
         gameboard: payload.word.replace(/[A-Z]/g, '__ ').split(' '),
+        gameStarting: true,
         count: payload.count
       };
     }

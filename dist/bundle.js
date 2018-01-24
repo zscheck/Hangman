@@ -14313,13 +14313,6 @@ var Game = function (_Component) {
   }
 
   _createClass(Game, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      var dispatch = this.props.dispatch;
-
-      dispatch((0, _GameAction.startGame)());
-    }
-  }, {
     key: 'hint',
     value: function hint() {
       var _props = this.props,
@@ -14368,7 +14361,7 @@ var Game = function (_Component) {
       if (!gameboard.includes('__') && gameboard.length > 0) {
         return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/winner' });
       }
-      if (word == '' && gameStarting) {
+      if (word == '' && !gameStarting) {
         return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
       }
       var buttonClass = {};
@@ -14497,7 +14490,6 @@ exports.default = Game;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.startGame = startGame;
 exports.newCount = newCount;
 exports.removeLetter = removeLetter;
 exports.updateGameboard = updateGameboard;
@@ -14508,13 +14500,6 @@ var _axios = __webpack_require__(70);
 var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function startGame() {
-  return {
-    type: 'START_GAME',
-    payload: true
-  };
-}
 
 function newCount(x) {
   return {
@@ -14621,6 +14606,7 @@ function GameReducer() {
         return _extends({}, state, {
           word: payload.word,
           gameboard: payload.word.replace(/[A-Z]/g, '__ ').split(' '),
+          gameStarting: true,
           count: payload.count
         });
       }
@@ -14746,6 +14732,13 @@ var Landing = function (_Component) {
   }
 
   _createClass(Landing, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var dispatch = this.props.dispatch;
+
+      dispatch((0, _LandingAction.startGame)());
+    }
+  }, {
     key: 'beginner',
     value: function beginner(e) {
       var dispatch = this.props.dispatch;
@@ -14890,6 +14883,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.beginner = beginner;
+exports.startGame = startGame;
 
 var _axios = __webpack_require__(70);
 
@@ -14913,19 +14907,12 @@ function beginner(x) {
   };
 }
 
-// export function moderate(x) {
-//   return {
-//     type: 'MOVIE_INFO',
-//     payload: movie
-//   };
-// }
-
-// export function hard(x) {
-//   return {
-//     type: 'UPDATE_SEARCH',
-//     payload: { searchTerm }
-//   };
-// }
+function startGame() {
+  return {
+    type: 'START_GAME',
+    payload: true
+  };
+}
 
 /***/ }),
 /* 153 */

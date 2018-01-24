@@ -4,7 +4,6 @@ import {
   newCount,
   updateGameboard,
   removeLetter,
-  startGame,
   getSynonyms
 } from './GameAction';
 
@@ -14,11 +13,6 @@ export default class Game extends Component {
 
     this.selectLetter = this.selectLetter.bind(this);
     this.hint = this.hint.bind(this);
-  }
-
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(startGame());
   }
 
   hint() {
@@ -46,7 +40,7 @@ export default class Game extends Component {
     if (!gameboard.includes('__') && gameboard.length > 0) {
       return <Redirect to='/winner' />;
     }
-    if (word == '' && gameStarting) {
+    if (word == '' && !gameStarting) {
       return <Redirect to='/' />;
     }
     let buttonClass = {};

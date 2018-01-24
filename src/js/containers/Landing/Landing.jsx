@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  startGame,
   beginner
 } from './LandingAction';
 
@@ -11,6 +12,11 @@ export default class Landing extends Component {
     this.beginner = this.beginner.bind(this);
     // this.moderate = this.moderate.bind(this);
     // this.hard = this.hard.bind(this);
+  }
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(startGame());
   }
 
   beginner(e) {
