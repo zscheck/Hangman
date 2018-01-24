@@ -14762,32 +14762,32 @@ var Landing = function (_Component) {
           _react2.default.createElement(
             'span',
             { className: 'a' },
-            '  A '
+            ' A '
           ),
           _react2.default.createElement(
             'span',
             { className: 'n' },
-            '  N '
+            ' N '
           ),
           _react2.default.createElement(
             'span',
             { className: 'g' },
-            '  G '
+            ' G '
           ),
           _react2.default.createElement(
             'span',
             { className: 'm' },
-            '  M '
+            ' M '
           ),
           _react2.default.createElement(
             'span',
             { className: 'a' },
-            '  A '
+            ' A '
           ),
           _react2.default.createElement(
             'span',
             { className: 'n' },
-            '  N '
+            ' N '
           )
         ),
         _react2.default.createElement(
@@ -14999,7 +14999,7 @@ var Lose = function (_Component) {
         { className: 'text-center text-white' },
         _react2.default.createElement(
           'h1',
-          null,
+          { className: 'hangman' },
           'The word was',
           _react2.default.createElement(
             'span',
@@ -15122,7 +15122,7 @@ var Win = function (_Component) {
         _react2.default.createElement('div', { className: 'after' }),
         _react2.default.createElement(
           'h1',
-          null,
+          { className: 'hangman' },
           'Congratulations!'
         ),
         _react2.default.createElement(

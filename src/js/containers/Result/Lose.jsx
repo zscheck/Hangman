@@ -18,7 +18,7 @@ export default class Lose extends Component {
     const { word } = this.props;
     return (
       <div className='text-center text-white'>
-        <h1>The word was<span className='text-danger'>{' ' + word}</span></h1>
+        <h1 className='hangman'>The word was<span className='text-danger'>{' ' + word}</span></h1>
         <h1 className='animated intensifies'>You Suck!!!!!</h1>
         <div className='mb-3'>
           <img src='./gallows/gallows6.jpg' alt='Game Over' />

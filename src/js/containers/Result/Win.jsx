@@ -20,7 +20,7 @@ export default class Win extends Component {
       <div className='pyro text-center text-white'>
         <div className='before' />
         <div className='after' />
-        <h1>Congratulations!</h1>
+        <h1 className='hangman'>Congratulations!</h1>
         <h3>Way to be AWESOME!</h3>
         <h1>The word was<span className='text-success'>{' ' + word}</span></h1>        <Link to={ '/' }>
         <button className='btn btn-primary' onClick={ this.backHome }>Play Again?</button>
