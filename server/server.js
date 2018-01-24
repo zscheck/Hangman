@@ -3,17 +3,23 @@ const morgan = require('morgan');
 const axios = require('axios');
 const env = require('dotenv').config();
 const randomWords = require('random-words');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const redis = require('redis');
-// const redisClient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
-const REDIS_PORT = process.env.REDIS_PORT;
-const REDIS_HOST = process.env.REDIS_HOST;
-const redisClient = redis.createClient(REDIS_HOST, REDIS_PORT);
+const redisClient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+// const REDIS_PORT = process.env.REDIS_PORT;
+// const REDIS_HOST = process.env.REDIS_HOST;
+// const redisClient = redis.createClient(REDIS_HOST, REDIS_PORT);
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.static('dist'));
 app.use(express.static('public'));
+app.use(bodyParser.json());
+
+mongoose.connect('mongodb://zscheck:Ar1z0na!@ds161630.mlab.com:61630/heroku_c4pv07b8', { useMongoClient: true });
+mongoose.Promise = Promise;
 
 redisClient.on('connect', () => {
   console.log('connected');

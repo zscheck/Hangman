@@ -27,7 +27,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div className='text-center text-white'>
-        <h1><span> H </span><span>  A </span><span>  N </span><span>  G </span><span >  M </span><span >  A </span><span>  N </span></h1>
+        <h1 className='hangman'><span className='h'> H </span><span className='a'>  A </span><span className='n'>  N </span><span className='g'>  G </span><span className='m'>  M </span><span className='a'>  A </span><span className='n'>  N </span></h1>
         <h3>Let's play a game...</h3>
         <div className='mb-3'>
           <img src='./gallows/gallows6.jpg' alt='Hangman' />

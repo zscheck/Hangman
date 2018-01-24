@@ -14753,40 +14753,40 @@ var Landing = function (_Component) {
         { className: 'text-center text-white' },
         _react2.default.createElement(
           'h1',
-          null,
+          { className: 'hangman' },
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'h' },
             ' H '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'a' },
             '  A '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'n' },
             '  N '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'g' },
             '  G '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'm' },
             '  M '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'a' },
             '  A '
           ),
           _react2.default.createElement(
             'span',
-            null,
+            { className: 'n' },
             '  N '
           )
         ),
@@ -14999,11 +14999,6 @@ var Lose = function (_Component) {
         { className: 'text-center text-white' },
         _react2.default.createElement(
           'h1',
-          { className: 'animated intensifies' },
-          'You Suck!!!!!'
-        ),
-        _react2.default.createElement(
-          'h1',
           null,
           'The word was',
           _react2.default.createElement(
@@ -15011,6 +15006,11 @@ var Lose = function (_Component) {
             { className: 'text-danger' },
             ' ' + word
           )
+        ),
+        _react2.default.createElement(
+          'h1',
+          { className: 'animated intensifies' },
+          'You Suck!!!!!'
         ),
         _react2.default.createElement(
           'div',
