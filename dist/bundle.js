@@ -14368,6 +14368,9 @@ var Game = function (_Component) {
       if (!gameboard.includes('__') && gameboard.length > 0) {
         return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/winner' });
       }
+      if (word == '' && gameStarting) {
+        return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+      }
       var buttonClass = {};
       letters.forEach(function (letter) {
         if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'U' || letter == 'O') {

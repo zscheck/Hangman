@@ -46,6 +46,9 @@ export default class Game extends Component {
     if (!gameboard.includes('__') && gameboard.length > 0) {
       return <Redirect to='/winner' />;
     }
+    if (word == '' && gameStarting) {
+      return <Redirect to='/' />;
+    }
     let buttonClass = {};
     letters.forEach(letter => {
       if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'U' || letter == 'O') {
