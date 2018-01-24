@@ -6,10 +6,10 @@ const randomWords = require('random-words');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const redis = require('redis');
-const redisClient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
-// const REDIS_PORT = process.env.REDIS_PORT;
-// const REDIS_HOST = process.env.REDIS_HOST;
-// const redisClient = redis.createClient(REDIS_HOST, REDIS_PORT);
+// const redisClient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const REDIS_PORT = process.env.REDIS_PORT;
+const REDIS_HOST = process.env.REDIS_HOST;
+const redisClient = redis.createClient(REDIS_HOST, REDIS_PORT);
 
 const app = express();
 
