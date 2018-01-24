@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function startGame() {
   return {
     type: 'START_GAME',
@@ -13,10 +15,13 @@ export function newCount(x) {
 }
 
 export function removeLetter(letters, index) {
-  letters.splice(index, 1);
+  const used = letters.splice(index, 1);
   return {
     type: 'REMOVE_LETTER',
-    payload: letters
+    payload: {
+      remaining: letters,
+      gone: used
+    }
   };
 }
 
@@ -32,5 +37,23 @@ export function updateGameboard(gameboard, word, letter) {
   return {
     type: 'UPDATE_GAMEBOARD',
     payload: board
+  };
+}
+
+export function getSynonyms(word) {
+  // console.log('Made it');
+  return (dispatch) => {
+    axios.get(`/synonyms/${word}`)
+      .then((results) => {
+        // console.log(results.data);
+        let synonyms = results.data.slice();
+        if (synonyms.length > 2) {
+          synonyms.splice(2);
+        }
+        dispatch({
+          type: 'SYNONYMS',
+          payload: synonyms
+        });
+      });
   };
 }

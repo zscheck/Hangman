@@ -32,6 +32,7 @@
     "omdb": "^0.8.0",
     "prop-types": "^15.5.10",
     "random-words": "0.0.1",
+    "rapidapi-connect": "0.0.6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^5.0.6",

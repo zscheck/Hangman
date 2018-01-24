@@ -3,7 +3,10 @@ const defaultState = {
   gameStarting: false,
   word: '',
   gameboard: [],
-  letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+  synonyms: [],
+  hintUsed: false,
+  usedLetters: []
 };
 
 export default function GameReducer(state = defaultState, action) {
@@ -20,7 +23,8 @@ export default function GameReducer(state = defaultState, action) {
     case 'REMOVE_LETTER': {
       return {
         ...state,
-        letters: payload
+        letters: payload.remaining,
+        usedLetters: [...state.usedLetters, payload.gone]
       };
     }
     case 'WORD': {
@@ -52,7 +56,18 @@ export default function GameReducer(state = defaultState, action) {
         count: 6,
         gameStarting: false,
         word: '',
-        gameboard: []
+        gameboard: [],
+        synonyms: [],
+        usedLetters: [],
+        hintUsed: false
+      };
+    }
+
+    case 'SYNONYMS': {
+      return {
+        ...state,
+        synonyms: payload,
+        hintUsed: true
       };
     }
 

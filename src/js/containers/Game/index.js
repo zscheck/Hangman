@@ -7,6 +7,9 @@ function MapStoreToProps(store) {
     gameboard: store.Game.gameboard,
     count: store.Game.count,
     letters: store.Game.letters,
+    hintUsed: store.Game.hintUsed,
+    synonyms: store.Game.synonyms,
+    usedLetters: store.Game.usedLetters,
     gameStarting: store.Game.gameStarting
   };
 }

@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export function beginner(x) {
-  console.log('Made it');
+  // console.log('Made it');
   return (dispatch) => {
     axios.get('/newword')
       .then((results) => {
-        console.log(results.data);
+        // console.log(results.data);
         dispatch({
           type: 'WORD',
           payload: {
