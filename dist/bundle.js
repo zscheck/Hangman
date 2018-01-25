@@ -14404,7 +14404,7 @@ var Game = function (_Component) {
             { className: 'col-4' },
             !hintUsed ? _react2.default.createElement(
               'button',
-              { className: 'btn btn-warning', onClick: this.hint },
+              { className: 'btn btn-warning pulse-button', onClick: this.hint },
               'Hint'
             ) : _react2.default.createElement(
               'div',
