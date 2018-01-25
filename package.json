@@ -9,7 +9,8 @@
     "start": "node server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",
-    "test": "npm run build && mocha test/setup.js test/*.spec.js"
+    "test": "npm run build && mocha test/setup.js test/*.spec.js",
+    "postinstall": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -22,6 +23,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
+    "electron": "^1.7.11",
     "express": "^4.15.3",
     "file-loader": "^0.11.2",
     "fs": "0.0.1-security",
