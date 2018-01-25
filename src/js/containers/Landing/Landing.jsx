@@ -27,11 +27,10 @@ export default class Landing extends Component {
   setDisplayTitle(title){
     // Create an object container to store randomized delays
     const setDelayProps = {};
-    for(let a of title.split('')){
+    for(let charIndex in title.split('')){
       // Check if setDelayProps already already exists
-      if(setDelayProps[a] == undefined){
-        // Set new random delay if letter not yet defined
-        setDelayProps[a] = 250 + parseInt(Math.random() * 1000);
+      if(setDelayProps[title[charIndex]] == undefined){
+        setDelayProps[title[charIndex]] = charIndex * 200 + 500;
       }
     }
 

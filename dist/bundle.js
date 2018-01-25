@@ -14750,37 +14750,14 @@ var Landing = function (_Component) {
     value: function setDisplayTitle(title) {
       // Create an object container to store randomized delays
       var setDelayProps = {};
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = title.split('')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var a = _step.value;
-
-          // Check if setDelayProps already already exists
-          if (setDelayProps[a] == undefined) {
-            // Set new random delay if letter not yet defined
-            setDelayProps[a] = 250 + parseInt(Math.random() * 1000);
-          }
-        }
-
-        // Map out title for rendering
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
+      for (var charIndex in title.split('')) {
+        // Check if setDelayProps already already exists
+        if (setDelayProps[title[charIndex]] == undefined) {
+          setDelayProps[title[charIndex]] = charIndex * 200 + 500;
         }
       }
 
+      // Map out title for rendering
       return title.split('').map(function (letter, index) {
         return _react2.default.createElement(
           'span',
