@@ -1,0 +1,3 @@
+Hangman is an application that was originally delveloped in two days and is built with Redux.  This app utilizes a random word generator from a package of over 1900 words and Wordnik API to generate synonyms hints. All API get requests are cached using Redis Cloud for efficiency.  The three difficuly levels represent how many strikes the user is allowed before he or she loses. My decision to use Redux was because I plan to expand on this project in the coming weeks by creating a database using mongoose through mLab MongoDB where a users can log in, see their running point total, display a leaderboard, and check out their completion stats by difficuly level. Proceed with caution... THIS GAME IS VERY ADDICTING!
+
+[a link](https://zs-hangman.herokuapp.com/)
