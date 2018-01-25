@@ -24,17 +24,37 @@ export default class Landing extends Component {
     dispatch(beginner(e.target.value));
   }
 
+  setDisplayTitle(title){
+    // Create an object container to store randomized delays
+    const setDelayProps = {};
+    for(let a of title.split('')){
+      // Check if setDelayProps already already exists
+      if(setDelayProps[a] == undefined){
+        // Set new random delay if letter not yet defined
+        setDelayProps[a] = 250 + parseInt(Math.random() * 1000);
+      }
+    }
+
+    // Map out title for rendering
+    return title.split('').map((letter,index) => (
+      <span key={letter + '-' + index}
+      className='animate popIn px-1'
+      style={{ animationDelay: `${setDelayProps[letter]}ms` }}>
+      
+      {letter.toUpperCase()}
+      
+      </span>
+    ))
+  }
+
   render() {
     return (
       <div className='text-center text-white'>
         <h1 className='hangman'>
-          <span className='h'> H </span>
-          <span className='a'> A </span>
-          <span className='n'> N </span>
-          <span className='g'> G </span>
-          <span className='m'> M </span>
-          <span className='a'> A </span>
-          <span className='n'> N </span>
+        {
+          // Map out title + set delays on a separate method
+          this.setDisplayTitle('hangman')
+        }
         </h1>
         <h3>Let's play a game...</h3>
         <div className='mb-3'>

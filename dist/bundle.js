@@ -14746,6 +14746,52 @@ var Landing = function (_Component) {
       dispatch((0, _LandingAction.beginner)(e.target.value));
     }
   }, {
+    key: 'setDisplayTitle',
+    value: function setDisplayTitle(title) {
+      // Create an object container to store randomized delays
+      var setDelayProps = {};
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = title.split('')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var a = _step.value;
+
+          // Check if setDelayProps already already exists
+          if (setDelayProps[a] == undefined) {
+            // Set new random delay if letter not yet defined
+            setDelayProps[a] = 250 + parseInt(Math.random() * 1000);
+          }
+        }
+
+        // Map out title for rendering
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return title.split('').map(function (letter, index) {
+        return _react2.default.createElement(
+          'span',
+          { key: letter + '-' + index,
+            className: 'animate popIn px-1',
+            style: { animationDelay: setDelayProps[letter] + 'ms' } },
+          letter.toUpperCase()
+        );
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -14754,41 +14800,9 @@ var Landing = function (_Component) {
         _react2.default.createElement(
           'h1',
           { className: 'hangman' },
-          _react2.default.createElement(
-            'span',
-            { className: 'h' },
-            ' H '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'a' },
-            ' A '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'n' },
-            ' N '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'g' },
-            ' G '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'm' },
-            ' M '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'a' },
-            ' A '
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'n' },
-            ' N '
-          )
+
+          // Map out title + set delays on a separate method
+          this.setDisplayTitle('hangman')
         ),
         _react2.default.createElement(
           'h3',
