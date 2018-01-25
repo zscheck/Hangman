@@ -18,7 +18,7 @@ app.use(express.static('dist'));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://zscheck:Ar1z0na!@ds161630.mlab.com:61630/heroku_c4pv07b8');
+mongoose.connect(`mongodb://zscheck:${process.env.MONGO_PASSWORD}@ds161630.mlab.com:61630/heroku_c4pv07b8`);
 mongoose.Promise = Promise;
 
 redisClient.on('connect', () => {
