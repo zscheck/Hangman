@@ -25,6 +25,12 @@ redisClient.on('connect', () => {
   console.log('connected');
 });
 
+app.get('/', (req, res) => {
+  res.status(200).send();
+});
+
+app.use('/api/users', require('./routes/users'));
+
 app.get('/newword', (req, res) => {
 //   axios.get(`http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=${process.env.WORDNIK_API_KEY}`)
 //   .then((result) => {

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
   startGame,
-  beginner
+  beginner,
+  findUsers,
+  signup
 } from './LandingAction';
 
 export default class Landing extends Component {
@@ -10,6 +12,8 @@ export default class Landing extends Component {
     super(props);
 
     this.beginner = this.beginner.bind(this);
+    this.signup = this.signup.bind(this);
+    // this.find = this.find.bind(this);
     // this.moderate = this.moderate.bind(this);
     // this.hard = this.hard.bind(this);
   }
@@ -17,12 +21,22 @@ export default class Landing extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(startGame());
+    dispatch(findUsers());
   }
 
   beginner(e) {
     const { dispatch } = this.props;
     dispatch(beginner(e.target.value));
   }
+  signup() {
+    const { dispatch } = this.props;
+    dispatch(signup());
+  }
+
+  // find() {
+  //   const { dispatch } = this.props;
+  //   dispatch(findUsers());
+  // }
 
   setDisplayTitle(title) {
     // Create an object container to store randomized delays
@@ -49,6 +63,8 @@ export default class Landing extends Component {
   }
 
   render() {
+    const { leaderBoard } = this.props;
+    console.log(99, leaderBoard);
     return (
       <div className='text-center text-white'>
         <h1 className='hangman'>
@@ -82,6 +98,7 @@ export default class Landing extends Component {
             </Link>
           </div>
         </div>
+        <button onClick={ this.signup }>Sign Up</button>
       </div>
     );
   }

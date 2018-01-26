@@ -1,22 +1,20 @@
-// const defaultState = {
-//   word: '',
-//   gameboard: ''
-// };
+const defaultState = {
+  leaderBoard: []
+};
 
-// export default function LandingReducer(state = defaultState, action) {
-//   const { type, payload } = action;
+export default function LandingReducer(state = defaultState, action) {
+  const { type, payload } = action;
 
-//   switch (type) {
-//     case 'WORD': {
-//       return {
-//         ...state,
-//         word: payload,
-//         gameboard: payload.replace(/[A-Z]/g, ' __ ')
-//       };
-//     }
+  switch (type) {
+    case 'LEADERBOARD': {
+      return {
+        ...state,
+        leaderBoard: payload
+      };
+    }
 
-//     default: {
-//       return state;
-//     }
-//   }
-// }
+    default: {
+      return state;
+    }
+  }
+}

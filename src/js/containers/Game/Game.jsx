@@ -53,16 +53,12 @@ export default class Game extends Component {
         buttonClass[letter] = 'btn btn-large btn-info shake';
       }
     });
-    console.log(buttonClass);
     const pictureNumber = 6 - count;
 
     return (
       <div className='mx-auto text-center text-white'>
         <div>
           <h1>Good Luck</h1>
-          {/* <Link to={ '/' }>
-            <button type='button' className='btn btn-link text-center'>Back to Search Results</button>
-          </Link> */}
           <br />
           <h1>{gameboard.join(' ')}</h1>
           <br />
@@ -91,7 +87,7 @@ export default class Game extends Component {
             <h3>Selected letters</h3>
             <div className='row'>
               {usedLetters.map(letter =>
-                <div className='col-3'>
+                <div className='col-3' key={ letter }>
                   <h3 className='text-info'>{ letter }</h3>
                 </div>
             )}
@@ -101,7 +97,7 @@ export default class Game extends Component {
         </div>
         <div className='row'>
           {letters.map((letter, index) =>
-            <div className='col-sm-2 col-md-2 col-lg-1 mx-auto my-2'>
+            <div className='col-sm-2 col-md-2 col-lg-1 mx-auto my-2' key={ letter }>
               <button className={ buttonClass[letter] } onClick={ this.selectLetter } id={ letter } title={ index }>
                 {letter}
               </button>
