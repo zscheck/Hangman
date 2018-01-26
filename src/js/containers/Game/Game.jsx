@@ -71,11 +71,17 @@ export default class Game extends Component {
           <div className='col-4'>
             { !hintUsed ?
               <button className='btn btn-warning pulse-button' onClick={ this.hint }>Hint</button> :
-              <div>
-                <h1 className='text-primary'>Synonyms</h1>
-                <h3 className='my-2 text-success'>{synonyms[0]}</h3>
-                <h3 className='my-2 text-success'>{synonyms[1]}</h3>
-              </div>
+              synonyms.length === 0 ?
+                <div>
+                  <h3>Sorry</h3>
+                  <h3>No Synonyms</h3>
+                  <h3>Available!</h3>
+                </div> :
+                <div>
+                  <h1 className='text-primary'>Synonyms</h1>
+                  <h3 className='my-2 text-success'>{synonyms[0]}</h3>
+                  <h3 className='my-2 text-success'>{synonyms[1]}</h3>
+                </div>
           }
           </div>
           <div className='mb-3 col-4'>
