@@ -33,6 +33,7 @@
     "lodash": "^4.15.0",
     "lodash-webpack-plugin": "^0.10.2",
     "mongoose": "^5.0.1",
+    "mongoose-unique-validator": "^2.0.0",
     "morgan": "^1.8.1",
     "omdb": "^0.8.0",
     "prop-types": "^15.5.10",

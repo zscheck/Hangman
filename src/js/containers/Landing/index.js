@@ -3,7 +3,7 @@ import Landing from './Landing';
 
 function MapStoreToProps(store) {
   return {
-    word: store.Game.word
+    leaderBoard: store.Landing.leaderBoard
   };
 }
 
