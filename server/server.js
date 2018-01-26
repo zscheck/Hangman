@@ -50,13 +50,16 @@ app.get('/synonyms/:word', (req, res) => {
         console.log('false');
       axios.get(`http://api.wordnik.com:80/v4/word.json/${word}/relatedWords?useCanonical=false&relationshipTypes=synonym&limitPerRelationshipType=10&api_key=${process.env.WORDNIK_API_KEY}`)
     .then((result) => {
-    //   console.log(result.data[0]);
-      const test = result.data[0].words.toString();
-    // console.log(1, result.data[0].words.toString());
-    // console.log(2, test.split(','));
-      redisClient.hmset(`${word}_word`, 'synonyms', test);
-      redisClient.expire(`${word}_word`, 999999999999999);
-      res.send(result.data[0].words);
+      if (result.data.length === 0) {
+        res.send(result.data);
+      } else {
+        const test = result.data[0].words.toString();
+      // console.log(1, result.data[0].words.toString());
+      // console.log(2, test.split(','));
+        redisClient.hmset(`${word}_word`, 'synonyms', test);
+        redisClient.expire(`${word}_word`, 999999999999999);
+        res.send(result.data[0].words);
+      }
     })
     .catch((error) => {
       console.log(error);
