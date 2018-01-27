@@ -3,7 +3,9 @@ import Landing from './Landing';
 
 function MapStoreToProps(store) {
   return {
-    leaderBoard: store.Landing.leaderBoard
+    leaderBoard: store.Landing.leaderBoard,
+    userId: store.Landing.userId,
+    username: store.Landing.username
   };
 }
 

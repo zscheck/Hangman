@@ -1,5 +1,8 @@
 const defaultState = {
-  leaderBoard: []
+  leaderBoard: [],
+  userId: '',
+  username: '',
+  userPoints: 0
 };
 
 export default function LandingReducer(state = defaultState, action) {
@@ -10,6 +13,15 @@ export default function LandingReducer(state = defaultState, action) {
       return {
         ...state,
         leaderBoard: payload
+      };
+    }
+
+    case 'CURRENT_USER': {
+      return {
+        ...state,
+        userId: payload.id,
+        username: payload.username,
+        userPoints: payload.totalPoints
       };
     }
 

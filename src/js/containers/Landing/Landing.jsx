@@ -4,7 +4,8 @@ import {
   startGame,
   beginner,
   findUsers,
-  signup
+  signup,
+  login
 } from './LandingAction';
 
 export default class Landing extends Component {
@@ -13,6 +14,7 @@ export default class Landing extends Component {
 
     this.beginner = this.beginner.bind(this);
     this.signup = this.signup.bind(this);
+    this.login = this.login.bind(this);
     // this.find = this.find.bind(this);
     // this.moderate = this.moderate.bind(this);
     // this.hard = this.hard.bind(this);
@@ -31,6 +33,11 @@ export default class Landing extends Component {
   signup() {
     const { dispatch } = this.props;
     dispatch(signup());
+  }
+
+  login() {
+    const { dispatch } = this.props;
+    dispatch(login());
   }
 
   // find() {
@@ -99,6 +106,7 @@ export default class Landing extends Component {
           </div>
         </div>
         <button onClick={ this.signup }>Sign Up</button>
+        <button onClick={ this.login }>Log in</button>
       </div>
     );
   }

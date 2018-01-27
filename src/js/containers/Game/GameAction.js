@@ -33,7 +33,7 @@ export function updateGameboard(gameboard, word, letter) {
   };
 }
 
-export function getSynonyms(word) {
+export function getSynonyms(word, points) {
   // console.log('Made it');
   return (dispatch) => {
     axios.get(`/synonyms/${word}`)
@@ -45,7 +45,10 @@ export function getSynonyms(word) {
         }
         dispatch({
           type: 'SYNONYMS',
-          payload: synonyms
+          payload: {
+            hints: synonyms,
+            points: points / 2
+          }
         });
       });
   };
