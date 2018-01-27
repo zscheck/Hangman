@@ -16,8 +16,8 @@ export default class Game extends Component {
   }
 
   hint() {
-    const { dispatch, word } = this.props;
-    dispatch(getSynonyms(word));
+    const { dispatch, word, gamePoints } = this.props;
+    dispatch(getSynonyms(word, gamePoints));
   }
 
   selectLetter(e) {

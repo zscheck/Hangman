@@ -1,13 +1,21 @@
 const express = require('express');
-
-const router = express.Router();
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
+const redis = require('redis');
+// const redisClient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const REDIS_PORT = process.env.REDIS_PORT;
+const REDIS_HOST = process.env.REDIS_HOST;
+const redisClient = redis.createClient(REDIS_HOST, REDIS_PORT);
+const router = express.Router();
+
+const saltRounds = 10;
+
 
 // GET	/api/users/ Retrieve all users
 router.get('/', (req, res) => {
   User.find()
       .then((users) => {
-        console.log(33, users);
+        // console.log(33, users);
         res.json(users);
       })
       .catch(console.error);
@@ -27,21 +35,45 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users Create a new user
 router.post('/', (req, res) => {
-  User.create(req.body, (err, user) => {
-    if (err) {
-      console.log(111, err);
-      // res.status(412).send(err);
-      res.send(err);
+  bcrypt.hash(req.body.password, saltRounds, (error, hash) => {
+    const newUser = {
+      username: req.body.username.toLowerCase(),
+      email: req.body.email.toLowerCase(),
+      password: hash
+    };
+    // console.log(66, hash);
+    redisClient.hmset(hash, 'password', req.body.password);
+    redisClient.expire(hash, 999999999999999);
+
+    User.create(newUser, (err, user) => {
+      if (err) {
+        // console.log(111, err);
+        res.send(err);
+      } else {
+        // console.log(23, user);
+        res.status(201).json(user);
+      }
+    });
+  });
+});
+
+// POST Log in
+router.post('/login', (req, res) => {
+  User.find({ email: req.body.email })
+  .then((user) => {
+    if (user.length === 0) {
+      res.send({ message: 'Email Incorrect' });
     } else {
-      console.log(23, user);
-      res.status(201).json(user);
+      redisClient.hgetall(user[0].password, (err, object) => {
+        console.log(3, err);
+        if (object.password === req.body.password) {
+          res.json(user[0]);
+        } else {
+          res.send({ message: 'Password Incorrect' });
+        }
+      });
     }
   });
-        // .then((newUser) => {
-        //     console.log(newUser);
-        //   res.status(201).json(newUser);
-        // })
-        // .catch(console.error);
 });
 
 // PUT /api/users/:id Update a user

@@ -6,7 +6,8 @@ const defaultState = {
   letters: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'V', 'W', 'X', 'Y', 'Z'],
   synonyms: [],
   hintUsed: false,
-  usedLetters: []
+  usedLetters: [],
+  gamePoints: 0
 };
 
 export default function GameReducer(state = defaultState, action) {
@@ -33,7 +34,8 @@ export default function GameReducer(state = defaultState, action) {
         word: payload.word,
         gameboard: payload.word.replace(/[A-Z]/g, '__ ').split(' '),
         gameStarting: true,
-        count: payload.count
+        count: payload.count,
+        gamePoints: payload.points
       };
     }
 
@@ -60,6 +62,7 @@ export default function GameReducer(state = defaultState, action) {
         gameboard: [],
         synonyms: [],
         usedLetters: [],
+        gamePoints: 0,
         hintUsed: false
       };
     }
@@ -67,8 +70,9 @@ export default function GameReducer(state = defaultState, action) {
     case 'SYNONYMS': {
       return {
         ...state,
-        synonyms: payload,
-        hintUsed: true
+        synonyms: payload.hints,
+        hintUsed: true,
+        gamePoints: payload.points
       };
     }
 

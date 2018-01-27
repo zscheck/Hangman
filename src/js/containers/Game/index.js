@@ -9,6 +9,7 @@ function MapStoreToProps(store) {
     letters: store.Game.letters,
     hintUsed: store.Game.hintUsed,
     synonyms: store.Game.synonyms,
+    gamePoints: store.Game.gamePoints,
     usedLetters: store.Game.usedLetters,
     gameStarting: store.Game.gameStarting
   };
