@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
-import Landing from './Landing';
+import LeaderBoard from './LeaderBoard';
 
 function MapStoreToProps(store) {
   return {
     leaderBoard: store.Landing.leaderBoard,
-    userId: store.Landing.userId,
-    userPoints: store.Landing.userPoints,
     username: store.Landing.username
   };
 }
 
-export default connect(MapStoreToProps)(Landing);
+export default connect(MapStoreToProps)(LeaderBoard);

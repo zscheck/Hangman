@@ -24,7 +24,7 @@ export function beginner(x) {
 
 export function signup() {
   return (dispatch) => {
-    axios.post('/api/users/', { username: 'theMann', email: 'bbobb132y@bob.com', password: 'asdfgh' })
+    axios.post('/api/users/', { username: 'zzzzz', email: 'zachssss@gmail.com', password: 'asdfgh' })
     .then((result) => {
       if (result.data.message) {
         alert(result.data.message);
@@ -42,7 +42,7 @@ export function signup() {
 
 export function login() {
   return (dispatch) => {
-    axios.post('/api/users/login', { email: 'bbobb132y@bob.com', password: 'asdfgh' })
+    axios.post('/api/users/login', { email: 'zachssss@gmail.com', password: 'asdfgh' })
     .then((result) => {
       console.log(2, result.data);
       if (result.data.message) {
