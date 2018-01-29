@@ -7,6 +7,7 @@ import {
   signup,
   login
 } from './LandingAction';
+import NavBar from '../NavBar/NavBarIndex';
 
 export default class Landing extends Component {
   constructor(props) {
@@ -23,13 +24,38 @@ export default class Landing extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(startGame());
-    dispatch(findUsers());
+    // dispatch(findUsers());
+  }
+
+  setDisplayTitle(title) {
+    // Create an object container to store randomized delays
+    const setDelayProps = {};
+    for (const charIndex in title.split('')) {
+      // Check if setDelayProps already already exists
+      if (setDelayProps[title[charIndex]] == undefined) {
+        setDelayProps[title[charIndex]] = charIndex * 200 + 500;
+      }
+    }
+    
+    // Map out title for rendering
+    return title.split('').map((letter, index) => (
+      <span
+        key={ `${letter}-${index}` }
+        className='animate popIn px-1'
+        style={ { animationDelay: `${setDelayProps[letter]}ms` } }
+      >
+
+        {letter.toUpperCase()}
+
+      </span>
+    ));
   }
 
   beginner(e) {
     const { dispatch } = this.props;
     dispatch(beginner(e.target.value));
   }
+
   signup() {
     const { dispatch } = this.props;
     dispatch(signup());
@@ -45,35 +71,12 @@ export default class Landing extends Component {
   //   dispatch(findUsers());
   // }
 
-  setDisplayTitle(title) {
-    // Create an object container to store randomized delays
-    const setDelayProps = {};
-    for (const charIndex in title.split('')) {
-      // Check if setDelayProps already already exists
-      if (setDelayProps[title[charIndex]] == undefined) {
-        setDelayProps[title[charIndex]] = charIndex * 200 + 500;
-      }
-    }
-
-    // Map out title for rendering
-    return title.split('').map((letter, index) => (
-      <span
-        key={ `${letter}-${index}` }
-        className='animate popIn px-1'
-        style={ { animationDelay: `${setDelayProps[letter]}ms` } }
-      >
-
-        {letter.toUpperCase()}
-
-      </span>
-    ));
-  }
-
   render() {
-    const { leaderBoard } = this.props;
-    console.log(99, leaderBoard);
+    const { leaderBoard, username, userPoints } = this.props;
+    console.log(99, leaderBoard, username, userPoints);
     return (
       <div className='text-center text-white'>
+        <NavBar />
         <h1 className='hangman'>
           {
           // Map out title + set delays on a separate method

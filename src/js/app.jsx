@@ -9,6 +9,7 @@ import Landing from './containers/Landing/index';
 import Game from './containers/Game/index';
 import Lose from './containers/Result/LoseIndex';
 import Win from './containers/Result/WinIndex';
+import LeaderBoard from './containers/StatPages/LeaderBoardIndex';
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
           <Route path='/play' component={ Game } />
           <Route path='/youlose' component={ Lose } />
           <Route path='/winner' component={ Win } />
+          <Route path='/leaderboard' component={ LeaderBoard } />
         </div>
       </Router>
     );
