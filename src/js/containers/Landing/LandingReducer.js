@@ -11,7 +11,7 @@ export default function LandingReducer(state = defaultState, action) {
   switch (type) {
     case 'LEADERBOARD': {
       return {
-        ...state, 
+        ...state,
         leaderBoard: payload
       };
     }
