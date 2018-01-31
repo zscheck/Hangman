@@ -27,6 +27,12 @@ export default class NavBar extends Component {
           <span className='navbar-text'>
             {`Welcome ${username}!  Points: `}<span className='text-success'>{userPoints}</span>
           </span>
+          {/* <div>
+            <a className='navbar-brand' href='#'>
+              <img src='' width='30' height='30' className='d-inline-block align-top' alt='Built By:' />
+              Zachary Scheck
+            </a>
+          </div> */}
         </nav>
       );
     } else {
@@ -45,15 +51,7 @@ export default class NavBar extends Component {
             </ul>
           </div>
           <span>
-            <button type='button' className='btn btn-link' data-toggle='modal' data-target='.bd-example-modal-sm'>Small modal</button>
-
-            <div className='modal fade bd-example-modal-sm' tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true'>
-              <div className='modal-dialog modal-sm'>
-                <div className='modal-content'>
-                    ...
-                </div>
-              </div>
-            </div>
+            
           </span>
         </nav>
       );

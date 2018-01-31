@@ -36,7 +36,7 @@ export default class Landing extends Component {
         setDelayProps[title[charIndex]] = charIndex * 200 + 500;
       }
     }
-    
+
     // Map out title for rendering
     return title.split('').map((letter, index) => (
       <span
@@ -44,9 +44,7 @@ export default class Landing extends Component {
         className='animate popIn px-1'
         style={ { animationDelay: `${setDelayProps[letter]}ms` } }
       >
-
-        {letter.toUpperCase()}
-
+        {letter}
       </span>
     ));
   }
@@ -80,7 +78,7 @@ export default class Landing extends Component {
         <h1 className='hangman'>
           {
           // Map out title + set delays on a separate method
-          this.setDisplayTitle('hangman')
+          this.setDisplayTitle('HANGMAN')
         }
         </h1>
         <h3>Let's play a game...</h3>
