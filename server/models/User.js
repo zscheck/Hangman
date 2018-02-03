@@ -20,16 +20,16 @@ const UserSchema = new Schema({
   games: [{ type: Schema.Types.ObjectId, ref: 'Game' }]
 }, { timestamps: true });
 
-UserSchema.plugin(uniqueValidator, { message: 'is already taken.' });
+// UserSchema.plugin(uniqueValidator, { message: 'is already taken.' });
 
-UserSchema.methods.setPassword = (password) => {
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'hello123').toString('hex');
-};
+// UserSchema.methods.setPassword = (password) => {
+//   this.salt = crypto.randomBytes(16).toString('hex');
+//   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'hello123').toString('hex');
+// };
 
-UserSchema.methods.validPassword = (password) => {
-  const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'hello123').toString('hex');
-  return this.hash === hash;
-};
+// UserSchema.methods.validPassword = (password) => {
+//   const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'hello123').toString('hex');
+//   return this.hash === hash;
+// };
 
 module.exports = mongoose.model('User', UserSchema);
