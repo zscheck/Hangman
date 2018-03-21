@@ -39,7 +39,7 @@ export function getSynonyms(word, points) {
     axios.get(`/synonyms/${word}`)
       .then((results) => {
         // console.log(results.data);
-        let synonyms = results.data.slice();
+        const synonyms = results.data.slice();
         if (synonyms.length > 2) {
           synonyms.splice(2);
         }

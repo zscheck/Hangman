@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   newCount,
   updateGameboard,
@@ -33,21 +33,31 @@ export default class Game extends Component {
   }
 
   render() {
-    const { word, letters, gameboard, count, gameStarting, hintUsed, synonyms, usedLetters } = this.props;
+    const {
+      word,
+      letters,
+      gameboard,
+      count,
+      gameStarting,
+      hintUsed,
+      synonyms,
+      usedLetters
+    } = this.props;
+
     if (count === 0 && gameStarting) {
       return <Redirect to='/youlose' />;
     }
     if (!gameboard.includes('__') && gameboard.length > 0) {
       return <Redirect to='/winner' />;
     }
-    if (word == '' && !gameStarting) {
+    if (word === '' && !gameStarting) {
       return <Redirect to='/' />;
     }
-    let buttonClass = {};
-    letters.forEach(letter => {
-      if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'U' || letter == 'O') {
+    const buttonClass = {};
+    letters.forEach((letter) => {
+      if (letter === 'A' || letter === 'E' || letter === 'I' || letter === 'U' || letter === 'O') {
         buttonClass[letter] = 'btn btn-large btn-success shake';
-      } else if (letter == 'R' || letter == 'L' || letter == 'S' || letter == 'T' || letter == 'N') {
+      } else if (letter === 'R' || letter === 'L' || letter === 'S' || letter === 'T' || letter === 'N') {
         buttonClass[letter] = 'btn btn-large btn-primary shake';
       } else {
         buttonClass[letter] = 'btn btn-large btn-info shake';
@@ -98,7 +108,12 @@ export default class Game extends Component {
         <div className='row'>
           {letters.map((letter, index) =>
             <div className='col-sm-2 col-md-2 col-lg-1 mx-auto my-2' key={ letter }>
-              <button className={ buttonClass[letter] } onClick={ this.selectLetter } id={ letter } title={ index }>
+              <button
+                className={ buttonClass[letter] }
+                onClick={ this.selectLetter }
+                id={ letter }
+                title={ index }
+              >
                 {letter}
               </button>
             </div>
